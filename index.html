@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Portal</title>
+  <meta name="description" content="Pick a course to start — each opens its full material on GitHub." />
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --bg-grad-1: #eef2ff;
+      --bg-grad-2: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --border-hover: #cbd5e1;
+      --title: #0f172a;
+      --muted: #64748b;
+      --tag-bg: #f1f5f9;
+      --tag-fg: #475569;
+      --accent: #2563eb;
+      --shadow: rgba(15, 23, 42, 0.08);
+      --shadow-hover: rgba(15, 23, 42, 0.16);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1120;
+        --bg-grad-1: #131c31;
+        --bg-grad-2: #0b1120;
+        --card-bg: #111a2e;
+        --border: #1e293b;
+        --border-hover: #334155;
+        --title: #f1f5f9;
+        --muted: #94a3b8;
+        --tag-bg: #1e293b;
+        --tag-fg: #cbd5e1;
+        --accent: #60a5fa;
+        --shadow: rgba(0, 0, 0, 0.35);
+        --shadow-hover: rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: radial-gradient(1200px 600px at 50% -10%, var(--bg-grad-1), var(--bg-grad-2));
+      color: var(--title);
+      font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 8px 20px 64px;
+    }
+
+    header {
+      text-align: center;
+      padding: 64px 0 44px;
+    }
+
+    header .eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 5vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin: 0 0 12px;
+      color: var(--title);
+    }
+
+    header p {
+      margin: 0 auto;
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.55;
+    }
+
+    .grid {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px 26px;
+      box-shadow: 0 1px 2px var(--shadow);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .card:hover,
+    .card:focus-visible {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 34px var(--shadow-hover);
+      border-color: var(--border-hover);
+      outline: none;
+    }
+
+    .card:focus-visible {
+      box-shadow: 0 0 0 3px var(--accent), 0 16px 34px var(--shadow-hover);
+    }
+
+    .icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .card h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 0 0 8px;
+      color: var(--title);
+    }
+
+    .card .desc {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .tag {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 4px 11px;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      color: var(--tag-fg);
+    }
+
+    .go {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent);
+      transition: gap 0.18s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .card:hover .go { gap: 8px; }
+    .go::after { content: "→"; }
+
+    footer {
+      text-align: center;
+      margin-top: 56px;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <span class="eyebrow">Learning Portal</span>
+      <h1>Choose a course to start</h1>
+      <p>Interactive lessons, quizzes, and progress tracking. Each course opens its full material on GitHub.</p>
+    </header>
+
+    <main class="grid">
+
+      <!-- ===== Angular ===== -->
+      <a class="card" href="https://thachthanhthien.github.io/angular/" target="_blank" rel="noopener">
+        <div class="icon" style="background:#dd0031;">A</div>
+        <h2>Angular</h2>
+        <p class="desc">Build modern single-page apps with standalone components, signals, and RxJS. Includes a roadmap, lesson reader, and quizzes.</p>
+        <div class="meta">
+          <span class="tag">Frontend</span>
+          <span class="go">View on GitHub</span>
+        </div>
+      </a>
+
+      <!-- ===== React ===== -->
+      <a class="card" href="https://thachthanhthien.github.io/react/" target="_blank" rel="noopener">
+        <div class="icon" style="background:#087ea4;">R</div>
+        <h2>React</h2>
+        <p class="desc">Learn hooks, state, and component patterns to build interactive UIs. Roadmap, Markdown lessons, and a five-type quiz engine.</p>
+        <div class="meta">
+          <span class="tag">Frontend</span>
+          <span class="go">View on GitHub</span>
+        </div>
+      </a>
+
+      <!-- ===== To add a course: copy an <a class="card"> block above and edit
+           the href, icon letter/color, title, description, and tag. ===== -->
+
+    </main>
+
+    <footer>
+      Built for self-paced learning · More courses coming soon
+    </footer>
+  </div>
+</body>
+</html>
